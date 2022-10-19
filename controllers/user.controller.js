@@ -3,6 +3,7 @@ const data = fs.readFileSync("userData.json");
 const users = JSON.parse(data);
 
 // http://localhost:5000/user/random
+// https://random-user-api-tv42.onrender.com/user/random
 module.exports.randomUser = (req, res) => {
   const randomUser = Math.floor(Math.random() * users.length);
   res.status(200).send({
@@ -14,6 +15,7 @@ module.exports.randomUser = (req, res) => {
 
 // http://localhost:5000/user/all
 // http://localhost:5000/user/all?limit=4
+// https://random-user-api-tv42.onrender.com/user/all?limit=4
 module.exports.allUser = (req, res) => {
   const { limit } = req.query;
   res.status(200).send({
@@ -24,6 +26,7 @@ module.exports.allUser = (req, res) => {
 };
 
 // http://localhost:5000/user/save
+// https://random-user-api-tv42.onrender.com/user/save
 module.exports.saveUser = (req, res) => {
   const newUser = req.body;
   const { gender, name, contact, address, photoUrl } = newUser;
@@ -50,6 +53,7 @@ module.exports.saveUser = (req, res) => {
 };
 
 // http://localhost:5000/user/update
+// https://random-user-api-tv42.onrender.com/user/update
 module.exports.updateUserInfo = (req, res) => {
   const {id} = req.params;
   const updatedUserId = users.find((user) => +user._id === +id);
@@ -74,6 +78,7 @@ module.exports.updateUserInfo = (req, res) => {
 };
 
 // http://localhost:5000/user/bulk-update
+// https://random-user-api-tv42.onrender.com/user/bulk-update
 module.exports.updateMultipleUserInfo = (req, res) => {
    const { id, updatedData } = req.body;
     
@@ -104,6 +109,7 @@ module.exports.updateMultipleUserInfo = (req, res) => {
 };
 
 // http://localhost:5000/user/delete
+//  https://random-user-api-tv42.onrender.com/user/delete
 module.exports.userRemove = (req, res) => {
  const { id } = req.params;
     const userId = users.find(user => +user._id === +id);
